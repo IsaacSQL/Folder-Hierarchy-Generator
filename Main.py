@@ -1,5 +1,14 @@
 import os
-parent_dir = input("Name of parent directory")
+def parent_directory_test():
+    parent_dir = input("Name of parent directory")
+    if os.path.isdir(parent_dir):
+        return parent_dir
+        print("Parent directory found")
+    else:
+        print("Directory not found")
+        parent_directory_test()
+
+parent_dir = parent_directory_test() 
 directory = input("Name of you main folder")
 path = os.path.join(parent_dir, directory)
 try:
@@ -7,7 +16,7 @@ try:
     print("Folder %s created!" % path)
 except FileExistsError:
     print("Folder %s already exists" % path)
-sub_folders = int(input("Enter how many folders should be inside: "))
+sub_folders = int(input("Enter how many sub-folders should be inside: "))
 shared_folders = int(input("Enter the number of folders that should be shared across?: "))
 shared_folders_names = []
 for x in range(shared_folders):
